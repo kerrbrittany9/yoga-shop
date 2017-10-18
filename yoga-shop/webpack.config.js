@@ -37,6 +37,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      },
+      {
         test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
@@ -60,10 +69,22 @@ module.exports = {
             "react-hot-loader/babel"
           ]
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'css-loader',
+        exclude: resolve(__dirname, "src/styles/styles.css"),
+        options: {
+          modules: true,
+          localIdentName: '[name]__[local]___[hash:base64:5]'
+        }
+      },
     ]
-   }
- },
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -71,7 +92,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'template.ejs',
       appMountId: 'react-app-root',
-      title: 'React Help Queue',
+      title: 'Yoga-Shop',
       filename: resolve(__dirname, "build", "index.html"),
     }),
   ]

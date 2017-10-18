@@ -15,6 +15,7 @@ function ProductList(props) {
           key={product.sku}
           product={product}
           handleAddToCart={props.handleAddToCart}
+          currentRoute={props.currentRoute}
           />
       )}
     </div>
@@ -23,7 +24,8 @@ function ProductList(props) {
 
 ProductList.propTypes = {
   products: PropTypes.object,
-  handleAddToCart: PropTypes.func
+  handleAddToCart: PropTypes.func,
+  currentRoute: PropTypes.string
 }
 
 export default ProductList;

@@ -1,22 +1,47 @@
 import React from "react";
+import NewProductForm from  "./NewProductForm";
+import PropTypes from "prop-types";
 
 class NewProductControl extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {formVisibleOnPage: false};
+    this.showForm = this.showForm.bind(this);
+    this.hideForm = this.hideForm.bind(this);
+    this.state = {
+      formVisibleOnPage: false
+    };
   }
 
-  handleDisplayingNewProductForm(event){
-    
+  showForm(){
+    this.setState({ formVisibleOnPage: true });
+  }
+
+  hideForm() {
+    this.setState({formVisibleOnPage: false});
   }
 
   render(){
+    const formVisibleOnPage = this.state.formVisibleOnPage;
+    let formAreaContent = null;
+    if (this.state.formIsVisibleOnPage) {
+      formAreaContent = <NewProductForm
+          onNewProductCreation={this.props.onNewProductCreation}
+          hideFormAfterSubmission = {this.hideForm}/>
+    } else {
+      formAreaContent = <button onClick={this.showForm}>Add Product</button>;
+    }
     return (
-      <button onClick={this.handleDisplayingNewProductForm}>Add Product</button>
+      <div>
+        {formAreaContent}
+      </div>
+
     );
   }
+}
 
+NewProductControl.propTypes = {
+  onNewProductCreation: PropTypes.func
 }
 
 export default NewProductControl;

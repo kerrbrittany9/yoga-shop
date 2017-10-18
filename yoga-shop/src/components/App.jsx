@@ -1,8 +1,8 @@
 import React from 'react';
 import ProductList from './ProductList';
-import Product from './Product';
-import Cart from './Cart';
+import Products from './Products';
 import Header from './Header';
+import Cart from './Cart';
 import { Switch, Route } from 'react-router-dom';
 import Background from "./../../img/yoga-pose.jpg";
 
@@ -31,9 +31,8 @@ function App(props) {
         <h1>om</h1>
       </div>
       <Switch>
-        <ProductList/>
         <Route exact path="/cart" component={Cart}/>
-        <Route path="/products" component={Product}/>
+        <Route path="/" component={Products}/>
       </Switch>
     </div>
 

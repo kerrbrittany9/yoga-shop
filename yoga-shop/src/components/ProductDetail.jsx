@@ -25,7 +25,8 @@ function ProductDetail(props) {
 ProductDetail.PropTypes = {
   product: PropTypes.object,
   sku: PropTypes.string,
-  handleAddToCart: PropTypes.func
+  handleAddToCart: PropTypes.func,
+  currentRoute: PropTypes.string
 };
 
 export default ProductDetail;
